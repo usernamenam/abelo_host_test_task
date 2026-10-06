@@ -65,7 +65,7 @@ final class Application
 
             echo $response;
         } catch (Throwable $e) {
-            echo $this->view->error(500, $e->getTraceAsString());
+            echo $this->view->error(500, 'Что-то пошло не так.');
         }
     }
 
