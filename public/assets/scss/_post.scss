@@ -1,0 +1,119 @@
+@use "mixins" as *;
+@use "tokens" as *;
+
+.categories {
+    @include dot-separated;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+        @include apparatus;
+    }
+
+    &__link {
+        color: $color-accent-strong;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.post {
+    max-width: $width-text;
+    margin: 0 auto;
+
+    &__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $space-sm $space-md;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: $space-md;
+    }
+
+    &__filing {
+        @include dot-separated;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+    }
+
+    &__date {
+        @include apparatus;
+
+        color: $color-ink-muted;
+    }
+
+    &__actions {
+        display: flex;
+        gap: $space-sm;
+        align-items: center;
+    }
+
+    &__lead {
+        margin-top: $space-md;
+        color: $color-ink-muted;
+        font-size: 1.1875rem;
+        line-height: 1.55;
+    }
+
+    &__cover {
+        margin-top: $space-lg;
+
+        img {
+            @include cover-image;
+
+            border: 1px solid $color-rule;
+            border-radius: $radius-sm;
+        }
+    }
+
+    &__content {
+        margin-top: $space-xl;
+        font-family: $font-display;
+        font-size: 1.1875rem;
+        line-height: 1.75;
+        white-space: pre-line;
+    }
+}
+
+.tally {
+    @include icon-row;
+
+    display: inline-flex;
+    gap: 0.4rem;
+    color: $color-ink-muted;
+    font-family: $font-mono;
+    font-size: 0.8125rem;
+}
+
+.share {
+    @include apparatus(0.6875rem, 0.08em);
+    @include icon-row;
+
+    display: inline-flex;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid $color-rule;
+    border-radius: $radius-sm;
+    background-color: transparent;
+    color: $color-ink-muted;
+    cursor: pointer;
+    gap: 0.4rem;
+    line-height: 1.4;
+    transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+
+    &:hover {
+        border-color: $color-accent;
+        color: $color-accent;
+    }
+
+    &--copied {
+        border-color: $color-accent-tint;
+        background-color: $color-accent-tint;
+        color: $color-accent-strong;
+    }
+}

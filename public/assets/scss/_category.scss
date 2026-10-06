@@ -1,0 +1,266 @@
+@use "mixins" as *;
+@use "tokens" as *;
+
+%pager-cell {
+    display: grid;
+    min-width: 2.25rem;
+    height: 2.25rem;
+    padding: 0 0.3rem;
+    border: 1px solid transparent;
+    border-radius: $radius-sm;
+    place-items: center;
+    color: $color-ink-muted;
+    text-decoration: none;
+    transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+
+.category {
+    &__plate {
+        max-width: 44rem;
+    }
+
+    &__eyebrow {
+        @include apparatus(0.6875rem, 0.14em);
+
+        color: $color-ink-muted;
+    }
+
+    &__name {
+        margin-top: $space-xs;
+        text-wrap: balance;
+    }
+
+    &__description {
+        margin-top: $space-md;
+        color: $color-ink-muted;
+        font-family: $font-display;
+        font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
+        line-height: 1.6;
+    }
+}
+
+.catalog-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-sm $space-md;
+    margin-top: $space-xl;
+    padding-bottom: $space-sm;
+    border-bottom: 1px solid $color-ink;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    &__count {
+        @include apparatus(0.6875rem, 0.1em);
+
+        color: $color-ink-muted;
+    }
+
+    &__value {
+        color: $color-ink;
+        font-weight: 700;
+    }
+}
+
+.sorter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-xs $space-sm;
+    align-items: center;
+
+    &__field {
+        position: relative;
+        display: inline-flex;
+    }
+
+    &__select {
+        min-width: 13.5rem;
+        padding: 0.5rem 2.25rem 0.5rem 0.75rem;
+        border: 1px solid $color-rule;
+        border-radius: $radius-sm;
+        appearance: none;
+        background-color: $color-surface;
+        color: $color-ink;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        transition: border-color 0.18s ease;
+
+        &:hover {
+            border-color: $color-ink;
+        }
+    }
+
+    &__chevron {
+        position: absolute;
+        top: 50%;
+        right: 0.75rem;
+        width: 0.85rem;
+        height: 0.85rem;
+        color: $color-ink-muted;
+        pointer-events: none;
+        transform: translateY(-50%);
+    }
+
+    &__apply {
+        padding: 0.5rem 0.85rem;
+        border: 1px solid $color-ink;
+        border-radius: $radius-sm;
+        background-color: $color-ink;
+        color: $color-surface;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.875rem;
+    }
+
+    &--auto &__apply {
+        display: none;
+    }
+}
+
+// Chrome 135+ hands the dropdown itself over to CSS; elsewhere the native picker stays.
+@supports (appearance: base-select) {
+    .sorter {
+        &__chevron {
+            display: none;
+        }
+
+        &__select {
+            display: inline-flex;
+            gap: $space-sm;
+            appearance: base-select;
+            align-items: center;
+            justify-content: space-between;
+
+            &::picker-icon {
+                color: $color-ink-muted;
+                transition: transform 0.18s ease;
+            }
+
+            &:open {
+                border-color: $color-ink;
+
+                &::picker-icon {
+                    transform: rotate(180deg);
+                }
+            }
+
+            &::picker(select) {
+                margin-top: 0.35rem;
+                padding: 0.25rem;
+                border: 1px solid $color-rule;
+                border-radius: $radius-sm;
+                background-color: $color-surface;
+                box-shadow: 0 14px 30px rgb(20 22 28 / 10%);
+                opacity: 0;
+                transition:
+                    opacity 0.16s ease,
+                    translate 0.16s ease,
+                    display 0.16s allow-discrete,
+                    overlay 0.16s allow-discrete;
+                translate: 0 -0.25rem;
+            }
+
+            &:open::picker(select) {
+                opacity: 1;
+                translate: 0;
+            }
+
+            @starting-style {
+                &:open::picker(select) {
+                    opacity: 0;
+                    translate: 0 -0.25rem;
+                }
+            }
+
+            option {
+                padding: 0.45rem 0.6rem;
+                border-radius: $radius-sm;
+                font-size: 0.875rem;
+
+                &::checkmark {
+                    order: 1;
+                    margin-left: auto;
+                    color: $color-accent;
+                }
+
+                &:checked {
+                    color: $color-accent-strong;
+                }
+
+                &:hover,
+                &:focus {
+                    background-color: $color-accent-tint;
+                    color: $color-accent-strong;
+                }
+            }
+        }
+    }
+}
+
+.catalog {
+    @include post-grid;
+
+    margin-top: $space-lg;
+
+    .card__image {
+        aspect-ratio: 3 / 2;
+    }
+}
+
+.pager {
+    display: flex;
+    gap: $space-xs;
+    margin-top: $space-xl;
+    align-items: center;
+    justify-content: center;
+
+    &__pages {
+        display: flex;
+        gap: 0.25rem;
+    }
+
+    &__step {
+        @extend %pager-cell;
+
+        &--off {
+            opacity: 0.3;
+        }
+    }
+
+    &__arrow {
+        width: 0.9rem;
+        height: 0.9rem;
+    }
+
+    &__page {
+        @extend %pager-cell;
+        @include apparatus(0.8125rem, 0.02em);
+
+        &--current {
+            border-color: $color-accent;
+            background-color: $color-accent;
+            color: $color-surface;
+        }
+    }
+
+    &__gap {
+        display: grid;
+        width: 1.25rem;
+        height: 2.25rem;
+        place-items: center;
+        color: $color-ink-muted;
+    }
+}
+
+// Only the links react: the current page and the dead ends are spans.
+a.pager__step:hover {
+    border-color: $color-ink;
+    color: $color-ink;
+}
+
+a.pager__page:hover {
+    border-color: $color-rule;
+    background-color: $color-surface;
+    color: $color-accent;
+}

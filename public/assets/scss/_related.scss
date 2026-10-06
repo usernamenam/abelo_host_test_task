@@ -1,0 +1,117 @@
+@use "mixins" as *;
+@use "tokens" as *;
+
+.label {
+    @include apparatus(0.6875rem, 0.14em);
+
+    color: $color-ink-muted;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.related {
+    margin-top: $space-2xl;
+
+    &__heading {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 $space-sm;
+        align-items: baseline;
+        padding-bottom: $space-sm;
+        border-bottom: 1px solid $color-ink;
+
+        h2 {
+            color: $color-ink;
+        }
+    }
+
+    &__note {
+        color: $color-ink-muted;
+        font-family: $font-mono;
+        font-size: 0.6875rem;
+        opacity: 0.75;
+    }
+
+    &__list {
+        @include post-grid;
+
+        margin-top: $space-lg;
+    }
+}
+
+.card {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    flex-direction: column;
+    border: 1px solid $color-rule;
+    border-radius: $radius-sm;
+    background-color: $color-surface;
+    transition: border-color 0.18s ease;
+
+    &:hover {
+        border-color: $color-rule-strong;
+
+        .card__title {
+            color: $color-accent;
+        }
+
+        .card__image {
+            transform: scale(1.03);
+        }
+    }
+
+    &__image {
+        @include cover-image;
+
+        border-bottom: 1px solid $color-rule;
+        transition: transform 0.4s ease;
+    }
+
+    &__body {
+        padding: $space-md;
+    }
+
+    &__title {
+        @include clamp-lines(3);
+
+        font-size: 1.0625rem;
+        line-height: 1.3;
+        transition: color 0.18s ease;
+    }
+
+    // Extends the titled link across the card.
+    &__link {
+        color: inherit;
+        text-decoration: none;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+        }
+    }
+
+    &__description {
+        @include clamp-lines(3);
+
+        margin-top: $space-xs;
+        color: $color-ink-muted;
+        font-size: 0.875rem;
+    }
+
+    &__record {
+        @include apparatus(0.6875rem);
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 $space-sm;
+        margin-top: auto;
+        padding: $space-sm $space-md $space-md;
+        border-top: 1px solid $color-rule;
+        align-items: baseline;
+        justify-content: space-between;
+        color: $color-ink-muted;
+    }
+}

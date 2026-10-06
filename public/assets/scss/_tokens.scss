@@ -1,0 +1,32 @@
+$color-paper: #f3f4f7;
+$color-surface: #fff;
+$color-ink: #14161c;
+$color-ink-muted: #5b616c;
+$color-rule: #d2d5dc;
+$color-rule-strong: #a9aeb9;
+$color-accent: #a4123a;
+$color-accent-strong: #7c0d2b;
+$color-accent-tint: #f6e3e8;
+
+$font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+$font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+$icon-size: 1.15em;
+
+$space-xs: 0.5rem;
+$space-sm: 0.75rem;
+$space-md: 1.25rem;
+$space-lg: 2rem;
+$space-xl: 3.25rem;
+$space-2xl: 5rem;
+
+$radius-sm: 4px;
+
+$width-page: 65rem;
+$width-text: 41rem;
+
+$breakpoints: (
+    "sm": 40rem,
+    "md": 60rem,
+);

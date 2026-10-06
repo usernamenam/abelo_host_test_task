@@ -1,0 +1,50 @@
+@use "mixins" as *;
+@use "tokens" as *;
+
+.notice {
+    display: grid;
+
+    // Centers the notice below the masthead.
+    min-height: calc(100vh - 13rem);
+    // Prevents long content from widening the grid on small screens.
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+    gap: $space-lg;
+
+    @include from("sm") {
+        column-gap: $space-xl;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+    }
+
+    &__code {
+        color: $color-ink-muted;
+        font-family: $font-display;
+        font-size: clamp(5rem, 3.5rem + 8vw, 9rem);
+        font-weight: 700;
+        letter-spacing: -0.06em;
+        line-height: 0.85;
+
+        @include from("sm") {
+            padding-right: $space-xl;
+            border-right: 1px solid $color-rule;
+        }
+    }
+
+    &__body {
+        max-width: 28rem;
+    }
+
+    &__text {
+        margin-top: $space-sm;
+        color: $color-ink-muted;
+    }
+
+    .button {
+        margin-top: $space-lg;
+    }
+
+    h1 {
+        font-size: clamp(1.5rem, 1.2rem + 1.2vw, 1.9rem);
+    }
+}

@@ -1,0 +1,11 @@
+<!-- Colors duplicate _tokens.scss because an external favicon cannot inherit page styles. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <path fill="none" stroke="#7c0d2b" stroke-width="2.8" d="M23 44C24.19 38.22 26.13 32.67 28.73 27.63"/>
+    <path fill="#a4123a" d="M50.5 6C47.59 18.66 42.63 29.36 27.41 30.34C29.45 25.86 24.82 23.77 26.22 21.47L27.5 25.25 27.91 17.41C28.98 15.91 29.92 14.45 31.12 13.06L32.52 17.58 34.3 10.17C38.34 6.17 42.04 9.63 50.5 6Z"/>
+    <path fill="#7c0d2b" d="M50.5 6C47.59 18.66 42.63 29.36 27.41 30.34 32.41 19.31 40.42 10.32 50.5 6Z"/>
+    <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.8" d="M29.55 26.09C33.36 19.19 38.43 13.34 44.48 9.28"/>
+    <path fill="#14161c" d="M16 46H32L34.5 54.5Q34.5 58 31 58H17Q13.5 58 13.5 54.5Z"/>
+    <rect width="10" height="4" x="19" y="42.5" fill="#14161c"/>
+    <rect width="17" height="4" x="15.5" y="39" fill="#14161c" rx="1.2"/>
+    <path fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="3.4" d="M27.5 48.5 28.7 54.5"/>
+</svg>

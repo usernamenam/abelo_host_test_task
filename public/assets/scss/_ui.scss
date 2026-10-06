@@ -1,0 +1,53 @@
+@use "mixins" as *;
+@use "tokens" as *;
+
+.icon {
+    width: $icon-size;
+    height: $icon-size;
+    flex: 0 0 auto;
+}
+
+.visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.empty-plate {
+    display: grid;
+    min-height: 16rem;
+    margin-top: $space-lg;
+    padding: $space-xl $space-md;
+    border: 1px dashed $color-rule;
+    border-radius: $radius-sm;
+    place-content: center;
+    justify-items: center;
+    background-color: $color-surface;
+    text-align: center;
+
+    &__title {
+        @include apparatus(0.75rem, 0.1em);
+
+        color: $color-ink-muted;
+    }
+}
+
+.button {
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    border-radius: $radius-sm;
+    background-color: $color-accent;
+    color: $color-surface;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.18s ease;
+
+    &:hover {
+        background-color: $color-accent-strong;
+        color: $color-surface;
+    }
+}

@@ -1,0 +1,60 @@
+@use "sass:color";
+@use "tokens" as *;
+
+.shell {
+    width: 100%;
+    max-width: $width-page;
+    margin: 0 auto;
+    padding: 0 $space-md;
+}
+
+.page-main {
+    flex: 1 0 auto;
+    padding: $space-xl 0 $space-2xl;
+}
+
+.masthead {
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    border-bottom: 1px solid $color-rule;
+    background-color: color.change($color-paper, $alpha: 0.82);
+    backdrop-filter: blur(12px);
+
+    &__inner {
+        display: flex;
+        gap: $space-md;
+        align-items: baseline;
+        padding-top: $space-md;
+        padding-bottom: $space-md;
+    }
+
+    &__title {
+        display: inline-flex;
+        gap: $space-sm;
+        align-items: center;
+        color: $color-ink;
+        font-family: $font-display;
+        font-size: 1.0625rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        line-height: 1.2;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        &:hover {
+            color: $color-accent-strong;
+
+            .masthead__mark {
+                transform: rotate(-6deg) translateY(-1px);
+            }
+        }
+    }
+
+    &__mark {
+        width: 1.75rem;
+        height: 1.75rem;
+        flex: 0 0 auto;
+        transition: transform 0.2s ease;
+    }
+}

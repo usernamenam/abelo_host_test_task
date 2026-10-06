@@ -1,0 +1,17 @@
+@use "base";
+@use "layout";
+@use "ui";
+@use "notice";
+@use "home";
+@use "category";
+@use "post";
+@use "related";
+
+.pager__step {
+    width: auto;
+    padding: 0 0.75rem;
+}
+
+.pager__position {
+    margin: 0;
+}
